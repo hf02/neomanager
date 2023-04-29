@@ -7,7 +7,7 @@ An unoffical CLI for [Neocities](https://neocities.org). It uploads folders quic
 Make sure you have Node installed, and then run:
 
 ```
-$ npm install --global [TODO]
+$ npm install --global neomanager
 ```
 
 ## Usage
