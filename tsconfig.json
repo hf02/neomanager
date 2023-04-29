@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"module": "ES2022",
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"outDir": "build",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"target": "ES2021",
+		"baseUrl": ".",
+		"noImplicitOverride": true,
+		"strictNullChecks": true
+	},
+	"include": ["./src/**/*"],
+	"exclude": ["./node_modules/**/*"]
+}
