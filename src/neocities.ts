@@ -1,4 +1,3 @@
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import FormData from "form-data";
 import https from "https";
 import Progress from "progress-stream";
