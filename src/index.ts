@@ -21,7 +21,6 @@ const { version } = require("../package.json");
 		} else {
 			console.log(`Neomanager`);
 		}
-		console.log("");
 
 		await ensureConfig();
 

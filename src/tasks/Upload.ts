@@ -139,6 +139,10 @@ export class UploadTask extends FileTask {
 
 				if (file == null) {
 					fullBreak = true;
+					// remove the last formData, as it'll just be empty
+					if (j === 0) {
+						formDatas.pop();
+					}
 					break;
 				}
 
