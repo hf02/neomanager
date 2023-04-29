@@ -1,8 +1,4 @@
-import {
-	Neocities,
-	NeocitiesFile,
-	NeocitiesRequestError,
-} from "./neocities.js";
+import { Neocities } from "./neocities.js";
 
 import { UploadTask } from "./tasks/Upload.js";
 import { Task } from "./lib/Task.js";
@@ -10,13 +6,18 @@ import { HelpTask } from "./tasks/Help.js";
 import { AuthTask } from "./tasks/Auth.js";
 import { DownloadTask } from "./tasks/Download.js";
 import { ensureConfig } from "./storage.js";
-import { IncomingMessage } from "http";
 
 (async () => {
 	try {
 		const args = process.argv.slice(2);
 
-		console.log("Neomanager");
+		const version = process.env.npm_package_version;
+
+		if (version) {
+			console.log(`Neomanager v${version}`);
+		} else {
+			console.log(`Neomanager`);
+		}
 		console.log("");
 
 		await ensureConfig();

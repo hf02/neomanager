@@ -4,7 +4,8 @@
 	"description": "An unofficial Neocities CLI",
 	"main": "index.js",
 	"scripts": {
-		"dev": "tsc --watch"
+		"dev": "tsc --watch",
+		"build": "tsc"
 	},
 	"keywords": [],
 	"type": "module",

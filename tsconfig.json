@@ -11,7 +11,8 @@
 		"target": "ES2021",
 		"baseUrl": ".",
 		"noImplicitOverride": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"rootDir": "./src"
 	},
 	"include": ["./src/**/*"],
 	"exclude": ["./node_modules/**/*"]
