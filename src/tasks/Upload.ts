@@ -193,7 +193,7 @@ export class UploadTask extends FileTask {
 				const resolve = NeocitiesRequestError.resolveError(e);
 				if (resolve === NeocitiesErrorTypes.InvalidFileType) {
 					console.error(
-						'You seem to have supporter-only file types while not being a supporter!\nYou can ignore these by placing "#!supporter" in your .neomanager-ignore.',
+						'You seem to have supporter-only file types while not being a supporter!\nYou can ignore these by placing "#*supporter" in your .neomanager-ignore.',
 					);
 					process.exit(1);
 				}

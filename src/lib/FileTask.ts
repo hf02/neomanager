@@ -13,7 +13,7 @@ export class FileTask extends Task {
 			);
 			const compiled = parser.compile(read);
 			const readLines = read.replaceAll("\r", "").split("\n");
-			const ignoreInvalid = readLines.includes("#!supporter");
+			const ignoreInvalid = readLines.includes("#*supporter");
 			return (filePath: string) => {
 				const fileExtension = path.extname(filePath).toLowerCase();
 				const validFreeFile = config.fileTypes.includes(
