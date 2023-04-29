@@ -8,18 +8,18 @@ _Note: I'm new when it comes to FOSS and CLI_
 
 https://user-images.githubusercontent.com/55464333/235323025-f2452a68-461e-4bc7-8390-0d3b22c64054.mp4
 
-|                     | Neomanager | Official CLI |
-| :------------------ | :--------: | :----------: |
-| Uploading           |     ✅     |      ✅      |
-| Stress test (video) |  **21s**   |    2m 5s     |
-| Downloading         |     ✅     |      ❌      |
-| Progress bar        |     ✅     |      ❌      |
-| Install method      |    npm     |   RubyGems   |
-| File list           |     ❌     |      ✅      |
-| Deleting            |     ❌     |     ✅¹      |
-| .gitignore support  |    ✅²     |      ✅      |
-| Site info           |     ❌     |      ✅      |
-| Pizza               |     ❌     |      ✅      |
+|                           | Neomanager | Official CLI |
+| :------------------------ | :--------: | :----------: |
+| Uploading                 |     ✅     |      ✅      |
+| Stress test (video above) |  **21s**   |    2m 5s     |
+| Downloading               |     ✅     |      ❌      |
+| Progress bar              |     ✅     |      ❌      |
+| Install method            |    npm     |   RubyGems   |
+| File list                 |     ❌     |      ✅      |
+| Deleting                  |     ❌     |     ✅¹      |
+| .gitignore support        |    ✅²     |      ✅      |
+| Site info                 |     ❌     |      ✅      |
+| Pizza                     |     ❌     |      ✅      |
 
 ---
 
