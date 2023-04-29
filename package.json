@@ -1,6 +1,6 @@
 {
 	"name": "neomanager",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "An unofficial Neocities CLI",
 	"main": "index.js",
 	"scripts": {
