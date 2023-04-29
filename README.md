@@ -4,7 +4,7 @@ An unofficial CLI for [Neocities](https://neocities.org). It uploads folders qui
 
 ## Install
 
-Make sure you have Node installed, and then run:
+Make sure you have [Node](https://nodejs.org/en) installed, and then run:
 
 ```
 $ npm install --global neomanager
