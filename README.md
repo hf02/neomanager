@@ -2,7 +2,30 @@
 
 An unofficial CLI for [Neocities](https://neocities.org). It uploads folders quicker than the official CLI by batching them, and comes with the ability to download your website.
 
-*Note: I'm new when it comes to FOSS*
+_Note: I'm new when it comes to FOSS and CLI_
+
+## Comparison
+
+|                           | Neomanager | Official CLI |
+| :------------------------ | :--------: | :----------: |
+| Uploading                 |     ✅     |      ✅      |
+| Speed (240 new, 256 same) |  **21s**   |    2m 5s     |
+| Downloading               |     ✅     |      ❌      |
+| Progress bar              |     ✅     |      ❌      |
+| Install method            |    npm     |   RubyGems   |
+| File list                 |     ❌     |      ✅      |
+| Deleting                  |     ❌     |     ✅¹      |
+| .gitignore support        |    ✅²     |      ✅      |
+| Site info                 |     ❌     |      ✅      |
+| Pizza                     |     ❌     |      ✅      |
+
+---
+
+¹: Manual
+
+²: Uses `.neomanager-ignore`. Lacks an option to disable or set using flags, but includes a catch-all for supporter-only files.
+
+---
 
 ## Install
 
@@ -25,3 +48,12 @@ Neomanager
 
 Done.
 ```
+
+### Skipping
+
+If Neomanager detects that the exact file is already uploaded to your website, it'll skip it.
+
+It also supports an ignore file called `.neomanager-ignore`. It uses the same syntax as `.gitignore`, but with some differences:
+
+-   Adding `#*supporter` will ignore all supporter-only file types.
+-   You have to specifically ignore `.neomanager-ignore`.
