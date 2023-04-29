@@ -7,11 +7,14 @@ import { AuthTask } from "./tasks/Auth.js";
 import { DownloadTask } from "./tasks/Download.js";
 import { ensureConfig } from "./storage.js";
 
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+
+const { version } = require("../package.json");
+
 (async () => {
 	try {
 		const args = process.argv.slice(2);
-
-		const version = process.env.npm_package_version;
 
 		if (version) {
 			console.log(`Neomanager v${version}`);
