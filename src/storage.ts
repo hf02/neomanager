@@ -8,6 +8,9 @@ export const configFilePath = path.join(paths.config, "config.json");
 export interface VNNConfig {
 	token?: string;
 	fileTypes: string[];
+	/**
+	 * any unknown
+	 */
 	corruptData?: string[];
 }
 
@@ -18,6 +21,9 @@ export let config: VNNConfig = {
 		),
 };
 
+/**
+ * makes sure the config file is there and that the one in memory is up to date
+ */
 export async function ensureConfig() {
 	await fs.ensureFile(configFilePath);
 	const read = await fs.readFile(configFilePath, "utf-8");
@@ -32,6 +38,9 @@ export async function ensureConfig() {
 	}
 }
 
+/**
+ * saves the config to disk
+ */
 export async function saveConfig() {
 	await fs.writeFile(configFilePath, JSON.stringify(config));
 }

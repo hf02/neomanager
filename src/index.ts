@@ -64,7 +64,9 @@ const { version } = require("../package.json");
 	} catch (e) {
 		console.error(e);
 
+		// have it all nice and indented
 		const errorString = `    ${e}`.split("\n").join("\n    ");
+
 		console.log(`\n\nAn error has occurred.\n${errorString}\n`);
 		process.exit(1);
 	}

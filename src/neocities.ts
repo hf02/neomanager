@@ -1,7 +1,6 @@
 import FormData from "form-data";
 import https from "https";
 import Progress from "progress-stream";
-import { timeoutPromise } from "./lib/timeoutPromise.js";
 import { Loading } from "./loading.js";
 import { config, ensureConfig, saveConfig } from "./storage.js";
 import readline from "readline/promises";
@@ -39,11 +38,22 @@ export class Neocities {
 
 	authorization: string | null;
 
+	/**
+	 * gets the token from a username and password.
+	 * @param username the username.
+	 * @param password the password.
+	 * @returns a token.
+	 */
 	async getToken(username: string, password: string) {
 		this.authorization = `Basic ${btoa(username + ":" + password)}`;
 		return (await this.request("get", "key")).api_key;
 	}
 
+	/**
+	 * authenticates, asking the user for login credentials if needed.
+	 * @param force if true, it'll make it request to login.
+	 * @returns true if the user was asked for login credentials.
+	 */
 	async auth(force = false) {
 		const loading = new Loading();
 		await ensureConfig();
@@ -84,6 +94,14 @@ export class Neocities {
 		return askedToLogIn;
 	}
 
+	/**
+	 * sends a request to neocities.
+	 * @param method the method.
+	 * @param url the url. `https://neocities.org/api/key` would be `"key"`.
+	 * @param progCall a progress callback.
+	 * @param formData any formdata to give.
+	 * @returns whatever json neocities gives back
+	 */
 	request(
 		method: string,
 		url: string,
@@ -161,17 +179,28 @@ export class Neocities {
 		return info.domain ?? `${info.sitename}.neocities.org`;
 	}
 
-	async list(
-		progress?: ProgressCallback,
-	): Promise<(NeocitiesFile | NeocitiesDirectory)[]> {
+	async list(): Promise<(NeocitiesFile | NeocitiesDirectory)[]> {
 		const request = await this.request("get", "list");
 		return request.files;
 	}
 
+	/**
+	 * Uploads files.
+	 *
+	 * **Note: Neocities will 500 if you give it too many files at once. 20 at a time seems safe.**
+	 * @param files The files to upload.
+	 * @param progCall A progress callback.
+	 */
 	async upload(files: FormData, progCall?: ProgressCallback) {
 		await this.request("post", "upload", progCall, files);
 	}
 
+	/**
+	 * Compares a file hash from on disk to a file on Neocities.
+	 * @param rootPath Where the root of the website would be on disk.
+	 * @param neoFile a NeocitiesFIle.
+	 * @returns `true` if the hashes match. in that case, they're the same file.
+	 */
 	async compareHashes(rootPath: string, neoFile: NeocitiesFile) {
 		const localPath = path.resolve(rootPath, neoFile.path);
 		const buffer = await fs.readFile(localPath);
@@ -184,9 +213,8 @@ export class Neocities {
 	}
 }
 
-export enum NeocitiesErrorTypes {
+export enum NeocitiesErrorType {
 	InvalidFileType,
-	Auth,
 }
 
 export class NeocitiesRequestError {
@@ -196,10 +224,15 @@ export class NeocitiesRequestError {
 		return `${this.response.statusCode} ${this.response.statusMessage}: ${this.message}`;
 	}
 
+	/**
+	 * manages errors when requesting something from neocities. if it can't figure it out, it throws what you gave it.
+	 * @param err literally any error
+	 * @returns a `NeocitiesErrorType`
+	 */
 	static resolveError(err: unknown) {
 		if (err instanceof NeocitiesRequestError) {
 			if (err.message.includes("is not a valid file type")) {
-				return NeocitiesErrorTypes.InvalidFileType;
+				return NeocitiesErrorType.InvalidFileType;
 			}
 			throw err;
 		} else {

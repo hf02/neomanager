@@ -4,7 +4,7 @@ import fsSync from "fs";
 import path from "path";
 import { Loading } from "../loading.js";
 import {
-	NeocitiesErrorTypes,
+	NeocitiesErrorType,
 	NeocitiesFile,
 	NeocitiesRequestError,
 } from "../neocities.js";
@@ -41,7 +41,10 @@ export class UploadTask extends FileTask {
 		const loading = new Loading();
 		loading.init();
 		loading.setDetail("Getting site files");
-		const neocitiesFiles = await neocities.list(loading.progressCallback);
+		const neocitiesFiles = await neocities.list();
+		/**
+		 * paths on the website mapped to a NeocitiesFile.
+		 */
 		const neocitiesFilePaths = new Map<string, NeocitiesFile>();
 
 		loading.progressCallback(0, 0);
@@ -191,7 +194,7 @@ export class UploadTask extends FileTask {
 				});
 			} catch (e) {
 				const resolve = NeocitiesRequestError.resolveError(e);
-				if (resolve === NeocitiesErrorTypes.InvalidFileType) {
+				if (resolve === NeocitiesErrorType.InvalidFileType) {
 					console.error(
 						'You seem to have supporter-only file types while not being a supporter!\nYou can ignore these by placing "#*supporter" in your .neomanager-ignore.',
 					);
