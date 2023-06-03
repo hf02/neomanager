@@ -8,6 +8,7 @@ import { DownloadTask } from "./tasks/Download.js";
 import { ensureConfig } from "./storage.js";
 
 import { createRequire } from "node:module";
+import { PizzaTask } from "./tasks/Pizza.js";
 const require = createRequire(import.meta.url);
 
 const { version } = require("../package.json");
@@ -32,6 +33,7 @@ const { version } = require("../package.json");
 			new AuthTask(neocities),
 			new UploadTask(neocities),
 			new DownloadTask(neocities),
+			new PizzaTask(neocities)
 		];
 
 		helpTask.tasks = tasks;
