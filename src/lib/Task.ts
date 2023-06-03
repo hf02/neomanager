@@ -9,7 +9,7 @@ export class Task {
 	 */
 	name: string;
 	/**
-	 * The description, used in help.
+	 * The description, used in help. Example: `"Orders a free pizza."`
 	 */
 	description: string;
 	/**

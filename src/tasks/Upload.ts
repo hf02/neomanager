@@ -9,7 +9,6 @@ import {
 	NeocitiesRequestError,
 } from "../neocities.js";
 import { FileTask } from "../lib/FileTask.js";
-import crypto from "crypto";
 import FormData from "form-data";
 
 export class UploadTask extends FileTask {
