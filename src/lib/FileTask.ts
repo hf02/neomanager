@@ -5,6 +5,11 @@ import { Task } from "./Task.js";
 import { config } from "../storage.js";
 
 export class FileTask extends Task {
+	/**
+	 * resolves if some file is ignored or not with .neomanager-ignore.
+	 * @param rootPath the directory to test for a .neomanager-ignore.
+	 * @returns a function that returns true if the given file is ignored.
+	 */
 	async ignoreResolver(rootPath: string) {
 		try {
 			const read = await fs.readFile(
