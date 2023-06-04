@@ -27,10 +27,15 @@ export interface NeocitiesDirectory {
 export interface NeocitiesInfo {
 	sitename: string;
 	hits: number;
+	views: number;
 	created_at: string;
-	last_updated: string;
+	last_updated: string | null;
 	domain: string | null;
 	tags: string[];
+	/**
+	 * appears to always be null, even if a website is on ipfs
+	 */
+	latest_ipfs_hash: null;
 }
 
 export class Neocities {
@@ -169,8 +174,11 @@ export class Neocities {
 	readonly host = `https://neocities.org`;
 	readonly headers = {};
 
-	async info(): Promise<NeocitiesInfo> {
-		const request = await this.request("get", "info");
+	async info(site?: string): Promise<NeocitiesInfo> {
+		const search = new URLSearchParams();
+		if (site) search.set("sitename", site);
+		let searchString = site ? `?${search}` : "";
+		const request = await this.request("get", `info${searchString}`);
 		return request.info;
 	}
 
@@ -215,6 +223,7 @@ export class Neocities {
 
 export enum NeocitiesErrorType {
 	InvalidFileType,
+	SiteNotFound,
 }
 
 export class NeocitiesRequestError {
@@ -233,6 +242,9 @@ export class NeocitiesRequestError {
 		if (err instanceof NeocitiesRequestError) {
 			if (err.message.includes("is not a valid file type")) {
 				return NeocitiesErrorType.InvalidFileType;
+			}
+			if (err.message.includes("could not find site")) {
+				return NeocitiesErrorType.SiteNotFound;
 			}
 			throw err;
 		} else {
