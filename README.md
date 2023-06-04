@@ -18,8 +18,8 @@ https://user-images.githubusercontent.com/55464333/235323025-f2452a68-461e-4bc7-
 | File list                 |     ❌     |      ✅      |
 | Deleting                  |     ❌     |     ✅¹      |
 | .gitignore support        |    ✅²     |      ✅      |
-| Site info                 |     ❌     |      ✅      |
-| Pizza                     |     ❌     |      ✅      |
+| Site info                 |     ✅     |      ✅      |
+| Pizza                     |     ✅     |      ✅      |
 
 ---
 
@@ -41,8 +41,6 @@ $ npm install --global neomanager
 
 ```
 $ neomanager upload .
-Neomanager
-
 224 uploading (4364 skipped)
 [=========================] 100%
 507.15KB/507.15KB
