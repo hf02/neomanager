@@ -12,17 +12,11 @@ import { PizzaTask } from "./tasks/Pizza.js";
 import { InfoTask } from "./tasks/Info.js";
 const require = createRequire(import.meta.url);
 
-const { version } = require("../package.json");
+export const { version } = require("../package.json");
 
 (async () => {
 	try {
 		const args = process.argv.slice(2);
-
-		if (version) {
-			console.log(`Neomanager v${version}`);
-		} else {
-			console.log(`Neomanager`);
-		}
 
 		await ensureConfig();
 

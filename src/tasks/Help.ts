@@ -1,3 +1,4 @@
+import { version } from "../index.js";
 import { Task } from "../lib/Task.js";
 
 export class HelpTask extends Task {
@@ -23,6 +24,7 @@ export class HelpTask extends Task {
 	}
 
 	override async run(args: string[]) {
+		console.log(`Neomanager v${version}`);
 		if (args.length === 0) {
 			console.log("Valid tasks:");
 
