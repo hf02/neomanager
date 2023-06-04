@@ -17,7 +17,7 @@ export class PizzaTask extends Task {
 		loading.init();
 		loading.setDetail("Ordering pizza");
 		await timeoutPromise(1000 * 30);
-		console.log("Timed out: no one came to the counter.");
+		console.log("No one came to the counter.");
 		process.exit(0);
 	}
 }
