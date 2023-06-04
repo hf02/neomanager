@@ -42,6 +42,9 @@ export class Loading {
 
 	intermediateStart = 0;
 
+	static readonly barFull = "█";
+	static readonly barEmpty = " ";
+
 	static generateValueProgressBar(
 		current: number,
 		max: number,
@@ -52,30 +55,33 @@ export class Loading {
 		const lineSegments = width - 7;
 
 		for (let i = 0; i < lineSegments; i++) {
-			if (i / lineSegments >= current / max || current === 0)
-				lines += " ";
-			else lines += "=";
+			if (i / lineSegments >= current / max || current === 0) {
+				lines += this.barEmpty;
+			} else {
+				lines += this.barFull;
+			}
 		}
 
 		const percent = `${~~((current / max) * 100)}`.padStart(3).slice(0, 3);
 
-		return `[${lines}] ${percent}%`;
+		return `▐${lines}▌ ${percent}%`;
 	}
 
 	static generateIntermediateProgressBar(start: number, width: number) {
+		// 7 = account for percentage and []
 		const lineSegments = width - 7;
 		const lines: string[] = [];
 		for (let i = 0; i < lineSegments; i++) {
-			lines.push(" ");
+			lines.push(this.barEmpty);
 		}
 
 		const intermediateWidth = 5;
 
 		for (let i = 0; i < intermediateWidth; i++) {
-			lines[(start + i) % lineSegments] = "=";
+			lines[(start + i) % lineSegments] = this.barFull;
 		}
 
-		return `[${lines.join("")}]     `;
+		return `▐${lines.join("")}▌     `;
 	}
 
 	generateProgressBar() {
