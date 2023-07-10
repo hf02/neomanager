@@ -57,3 +57,7 @@ It also supports an ignore file called `.neomanager-ignore`. It uses the same sy
 
 -   Adding `#*supporter` will ignore all supporter-only file types.
 -   You have to specifically ignore `.neomanager-ignore`.
+
+### What's `(finishing up)` mean?
+
+Neocities will error out and fail to upload if you upload too many files at a time. So, Neomanager gets around this by uploading files 20 at a time. The downside to this is that Neomanager has to wait on Neocities has to process the upload, which is what's going on during the `(finishing up)` phase.
