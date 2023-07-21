@@ -17,7 +17,7 @@ export class InfoTask extends Task {
 	}
 
 	formatNumber(number: number) {
-		return number.toLocaleString()
+		return number.toLocaleString();
 	}
 
 	override async run(args: string[]) {
@@ -27,7 +27,7 @@ export class InfoTask extends Task {
 		}
 		try {
 			const info = await this.neocities.info(givenSite || undefined);
-			
+
 			// we're intentionally missing latest_ipfs_hash, as it doesn't seem to do anything.
 			// if it does, then i have no idea what it returns.
 
@@ -35,7 +35,7 @@ export class InfoTask extends Task {
 			console.log("");
 			console.log(`${info.sitename} - ${domain}`);
 			console.log(`  Views: ${this.formatNumber(info.views)}`);
-			console.log(`   Hits: ${this.formatNumber(info.hits * 100)}`);
+			console.log(`   Hits: ${this.formatNumber(info.hits)}`);
 			console.log(`   Tags: ${info.tags.join(", ")}`);
 			console.log(`Created: ${this.formatDateString(info.created_at)}`);
 
