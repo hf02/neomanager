@@ -16,8 +16,8 @@ https://user-images.githubusercontent.com/55464333/235323025-f2452a68-461e-4bc7-
 | Progress bar              |     ✅     |      ❌      |
 | Install method            |    npm     |   RubyGems   |
 | File list                 |     ❌     |      ✅      |
-| Deleting                  |     ❌     |     ✅¹      |
-| .gitignore support        |    ✅²     |      ✅      |
+| Deleting                  |     ❌     |     ➖¹      |
+| .gitignore support        |    ➖²     |      ✅      |
 | Site info                 |     ✅     |      ✅      |
 | Pizza                     |     ✅     |      ✅      |
 
