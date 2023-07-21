@@ -42,7 +42,7 @@ $ npm install --global neomanager
 ```
 $ neomanager upload .
 224 uploading (4364 skipped)
-[=========================] 100%
+▐█████████████████████████▌ 100%
 507.15KB/507.15KB
 
 
