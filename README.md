@@ -1,3 +1,8 @@
+> [!Important]
+> 
+> There's now a rewrite that succeeds Neomanager: https://github.com/hf02/neowrangler
+
+
 # Neomanager
 
 An unofficial CLI for [Neocities](https://neocities.org). It uploads folders quicker than the official CLI by batching them, and comes with the ability to download your website.
